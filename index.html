@@ -52,6 +52,7 @@
                     <span class="say">y lo que nunca antes había encontrado.</span><br>
                 </div>
             </div>
+
             <div id="clock-box">
                 <a href="https://alexxdev.vercel.app/" target="_blank">Mi amor</a>
                 <a href="https://alexxdev.vercel.app/" target="_blank">por ti</a> comenzó hace...
@@ -62,9 +63,18 @@
         </div>
     </div>
 
-    <audio preload="auto" autoplay="" id="media" src="Love_files/love.mp3" autoplay preload loop="loop"></audio>
+    <!-- Audio: inicia al primer toque/clic (móviles bloquean autoplay) -->
+    <audio id="media" src="Love_files/love.mp3" loop></audio>
+
     <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("click", function () {
+        const audio = document.getElementById("media");
+        if (audio) {
+          audio.play().catch(() => {});
+        }
+      }, { once: true });
+    </script>
 </body>
-
-
 </html>
